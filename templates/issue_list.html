@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block message %}案件總覽{%endblock%}
+{% block main %}
+<table  id="tbl_issue" 
+    style="border:3px #FFAC55 double;padding:5px;" rules="all" cellpadding='5';>
+    <tr>
+        <td>選取</td><td>邊號</td><td>主題</td><td>問題描述</td><td>備註</td> <td>負責人</td>
+        <td>類型</td><td>起始日</td><td>到期日</td><td>結案日</td><td>狀態</td>
+        <td>執行 <a href='/issue/add'>新增</a></td>
+    </tr>
+    {% for issue in all %}
+        <tr>
+            <td class="cb"><center><input type="checkbox" name="" value="" /></center></td>
+            <td>{{issue.no}}</td>
+            <td>{{issue.topic}}</td>
+            <td>{{issue.desc}}</td>
+            <td>{{issue.notes}}</td>
+            <td>{{issue.owner}}</td>
+            <td>{{issue.type}}</td>
+            <td>{{issue.start_date}}</td>
+            <td>{{issue.end_date}}</td>
+            <td>{{issue.close_date}}</td>
+            <td>{{issue.status}}</td>
+            <td>
+                <nav>
+                    [<a href='/issue/edit/{{issue.no}}'>編輯</a>]
+                    [<a href='/issue/del/{{issue.no}}'>銷案</a>]
+                </nav>
+            </td>
+        </tr>
+    {% empty %}
+        <p>There is no issue available!</p>
+    {% endfor %}
+</table>
+{%endblock%}

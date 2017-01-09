@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>RMS 專案管理系統</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href='/'>
+                <img src='{% static "images/logo.png" %}' width = 150 />
+            </a>
+        </header>
+        <h1>{% block message %}{% endblock %}</h1>
+        <nav>
+            [<a href='/'>HOME</a>]
+            [<a href='/list/all'>所有案件</a>]
+            [<a href='/list/process'>待處理</a>]
+            [<a href='/list/rejected'>已退件</a>]
+            [<a href='/list/closed'>已結案</a>]
+            [<a href='/list/canceled'>已銷案</a>]
+            [<a href='/admin'>系統管理</a>]
+        </nav>
+        <hr>
+        {% block main %}{% endblock %}
+        <hr>
+        <p>這是一個 Django 網站, 由 Pyman 製作</p>
+    </body>
+</html>

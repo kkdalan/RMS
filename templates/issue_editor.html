@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RMS 專案管理系統 (編輯中)</title>
+</head>
+<body>
+
+<h3>案件編號: {{new_issue.no}}</h3>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" />
+</form>
+<!--
+<form action="">
+
+    主題: <input type="text" name="topic" value={{new_issue.topic}}>&emsp;
+    負責人: <input type="text" name="owner" value={{new_issue.owner}}>&emsp;
+    類型: <input type="text" name="type" value={{new_issue.type}}>&emsp;
+<br/><br/>
+
+起始日: <input type="text" name="start_date" value={{new_issue.start_date}}>&emsp;
+到期日: <input type="text" name="end_date" value={{new_issue.end_date}}>&emsp;
+結案日: <input type="text" name="close_date" value={{new_issue.close_date}}>&emsp;
+<br/><br/>
+
+狀態: <input type="text" name="status" value={{new_issue.status}}>&emsp;
+<br><br>
+
+問題描述:<br/><br/>
+<textarea rows="5" cols="100">
+{{new_issue.desc}}
+</textarea>
+<br><br>
+
+備註:<br/><br/>
+<textarea rows="5" cols="100">
+{{new_issue.notes}}
+</textarea>
+<br><br>
+
+<nav>
+    [<a href="/issue/save/{{new_issue}}">確定</a>]
+    [<a href="/list/all">取消</a>]
+</nav>
+
+<input type="submit" value="確定">&emsp;
+<input type="submit" value="取消">&emsp;
+</form>
+-->
+
+</body>
+</html>

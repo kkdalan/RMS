@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block message %}無法顯示網頁{%endblock%}
+{% block main %}
+<h3>
+    編輯失敗, 案件編號: {{issue_no}}<br>
+    無法顯示頁面, 請前往
+    <a href='/'>HOME</a>
+</h3>
+{%endblock%}
