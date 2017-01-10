@@ -16,11 +16,11 @@ class Issue(models.Model):
     notes = models.TextField(blank=True,max_length=255)
     type = models.CharField(blank=True,max_length=10)
     owner = models.CharField(blank=True,max_length=20)
-    start_date = models.DateField(blank=True)
-    end_date = models.DateField(blank=True)
-    close_date = models.DateField(blank=True)
+    start_date = models.DateField(blank=True,null=True)
+    end_date = models.DateField(blank=True,null=True)
+    close_date = models.DateField(blank=True,null=True)
     status = models.CharField(blank=True,max_length=10)
-    sys_time = models.DateTimeField(blank=True)
+    sys_time = models.DateTimeField(blank=True,default=datetime.now)
 
     def __unicode__(self):
         return self.topic

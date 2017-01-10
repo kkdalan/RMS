@@ -15,15 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from Issue.views import index, add_issue, edit_issue, del_issue, save_issue, notfound, issue_list, new_issue
+from Issue.views import login, index, add_issue, edit_issue, del_issue, notfound, issue_list
 
 urlpatterns = [
     url(r'^admin/',include(admin.site.urls)),
     url(r'^$',index),
     url(r'^list/(\w+)$',issue_list),
     url(r'^notfound/',notfound),
-    url(r'^issue/add$',new_issue),
-    url(r'^issue/edit/(\w+)$',edit_issue),
-    url(r'^issue/del/(\w+)$',del_issue),
-    url(r'^issue/save/(\w+)$',save_issue),
+    url(r'^issue/add$',add_issue),
+    url(r'^issue/edit/(\d+)$',edit_issue),
+    url(r'^issue/del/(\d+)$',del_issue),
 ]
