@@ -42,8 +42,11 @@ def issue_list(request, criteria ):
 def add_issue(request):
     all = Issue.objects.all()
     max_no = all.aggregate(Max('no'))
-    new_no = max_no['no__max'] + 1
-    # old_issue = Issue.objects.create(no = new_no)
+    if max_no['no__max'] == None:
+        new_no = 1
+    else:
+        new_no = max_no['no__max'] + 1
+    
     if request.method == 'POST':
         issue_form = IssueForm(request.POST)
         if issue_form.is_valid():
