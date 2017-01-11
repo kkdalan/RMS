@@ -7,22 +7,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime
 from django.db.models import Max
 from Issue.models import Issue, IssueForm
+from django.core.mail import EmailMessage
 
 # Create your views here.
-def login(request):
-    template = get_template('login.html')
-    try:
-        user_id = request.GET('user_id')
-        user_pass = request.GET('user_pass')
-    except:
-        user_id = None
-    if user_id != None and user_pass == '0000':
-        verified = True
-    else:
-        verified = False
-    html = template.render(locals())
-    return HttpResponse(html)
-
 def index(request):
     template = get_template('index.html')
     now = datetime.now
@@ -96,5 +83,4 @@ def notfound(request, issue_no):
     now = datetime.now
     html = template.render(locals())
     return HttpResponse(html)
-
 

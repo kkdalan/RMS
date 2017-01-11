@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>RMS 專案管理系統 (編輯中)</title>
-</head>
-<body>
-
-<h3>案件編號: {{new_issue.no}}</h3>
+{% extends 'base.html' %}
+{% block main %}
+<h4>案件編號: {{new_issue.no}}</h4>
 <form name='frm_issue_edit' action='' method='POST'>
     {% csrf_token %}
     <table>
         {{issue_form.as_table}}
     </table>
+    <script>
+        $( function() {
+            $( "#id_start_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+            $( "#id_end_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+            $( "#id_close_date" ).datepicker({dateFormat: 'yy-mm-dd'});
+        } );
+    </script>
+
 <!--
 主題: <input type="text" name="topic" value={{new_issue.topic}}>&emsp;
 負責人: <input type="text" name="owner" value={{new_issue.owner}}>&emsp;
@@ -33,11 +36,9 @@
 {{new_issue.notes}}
 </textarea>
 <br><br>
-
 -->
+
 <input type="submit" value="確定">
 <input type="reset" value="清除">
 </form>
-
-</body>
-</html>
+{% endblock %}

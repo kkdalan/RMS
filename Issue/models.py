@@ -5,9 +5,9 @@ from __future__ import unicode_literals
 from datetime import datetime, date
 from django.db import models
 from django import forms
+from functools import partial
 from django.forms import ModelForm, Textarea
 from django.utils.translation import ugettext_lazy as _
-
 
 # Create your models here.
 class Issue(models.Model):
@@ -22,18 +22,17 @@ class Issue(models.Model):
     end_date = models.DateField(blank=True,null=True)
     close_date = models.DateField(blank=True,null=True)
     status = models.CharField(blank=True,max_length=20)
-    sys_time = models.DateTimeField(blank=True,default=datetime.now)
+    sys_time = models.DateTimeField(blank=True,default=datetime.now, editable = False)
 
     def __unicode__(self):
         return self.topic
 
 class IssueForm(ModelForm):
     STATUS = [
-        ['新申請','新申請'],
-        ['處理中','處理中'],
-        ['已退件','已退件'],
-        ['銷案','銷案'],
-        ['結案','結案'],
+        ['New','New'],
+        ['Processing','Processing'],
+        ['Rejected','Rejected'],
+        ['Closed','Closed'],
     ]
     
     status = forms.ChoiceField(label='案件狀態', choices=STATUS)
@@ -57,8 +56,6 @@ class IssueForm(ModelForm):
         widgets = {
                 'desc': Textarea(attrs={'cols': 50, 'rows': 5}),
                 'notes': Textarea(attrs={'cols': 50, 'rows': 5}),
-                #'start_date': forms.DateInput(attrs={'class':'datepicker'}),
-                #'end_date': forms.DateInput(attrs={'class':'datepicker'}),
-                #'close_date': forms.DateInput(attrs={'class':'datepicker'}),
+                'start_date': forms.DateInput(attrs={'class':'datepicker'}),
         }
 

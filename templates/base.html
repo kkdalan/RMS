@@ -2,27 +2,36 @@
 {% load staticfiles %}
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>RMS 專案管理系統</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
     <body>
         <header>
-            <a href='/'>
-                <img src='{% static "images/logo4.jpeg" %}' width = 150 />
-            </a>
+            <input type='text' id = 'datepicker'>
+            <table>
+                <tr>
+                    <td><a href='/'><img src='{% static "images/logo.jpeg" %}' width = 150 /></a></td>
+                    <td><h1>RMS- Requirement Management System<h1</td>
+                </tr>
+            </table>
         </header>
-        <h1>{% block message %}{% endblock %}</h1>
         <nav>
-            [<a href='/'>HOME</a>]
+            [<a href='/index'>HOME</a>]
             [<a href='/list/all'>所有案件</a>]
-            [<a href='/list/process'>待處理</a>]
-            [<a href='/list/rejected'>已退件</a>]
-            [<a href='/list/closed'>已結案</a>]
-            [<a href='/list/canceled'>已銷案</a>]
+            [<a href='/list/New'>新申請</a>]
+            [<a href='/list/Processing'>待處理</a>]
+            [<a href='/list/Rejected'>已退件</a>]
+            [<a href='/list/Closed'>已結案</a>]
         </nav>
         <hr>
         {% block main %}{% endblock %}
         <hr>
-        這是一個 Django 網站, 由 Pyman 製作 - <a href='/admin'>系統管理</a>
+        <p>這是一個 Django 網站, 由 Pyman 製作</P> 
+        [<a href='/admin'>系統管理</a>]
+        [<a href='/logout'>登出</a>]
     </body>
 </html>

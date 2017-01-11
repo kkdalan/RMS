@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
-{% block message %}案件總覽{%endblock%}
 {% block main %}
 <table  id="tbl_issue" 
     style="border:3px #FFAC55 double;padding:5px;" rules="all" cellpadding='5';>
     <tr>
         <td>選取</td><td>編號</td><td>主題</td><td>問題描述</td><td>備註</td> <td>負責人</td>
         <td>類型</td><td>起始日</td><td>到期日</td><td>結案日</td><td>案件狀態</td>
-        <td colspan="2"><center> 執行 : <a href='/issue/add'>新增</a></center></td>
+        <td colspan="2"><center> 執行 : [<a href='/issue/add'>新增</a>]</center></td>
     </tr>
     {% for issue in all %}
         <tr>
