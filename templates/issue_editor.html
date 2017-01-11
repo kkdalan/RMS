@@ -3,7 +3,7 @@
 <h4>Issue No: {{new_issue.no}}</h4>
 <form name='frm_issue_edit' action='' method='POST'>
     {% csrf_token %}
-    <table>
+    <table id = "tb_issue_editor">
         {{issue_form.as_table}}
     </table>
     <script>
@@ -11,7 +11,7 @@
             $( "#id_start_date" ).datepicker({dateFormat: 'yy-mm-dd'});
             $( "#id_end_date" ).datepicker({dateFormat: 'yy-mm-dd'});
             $( "#id_close_date" ).datepicker({dateFormat: 'yy-mm-dd'});
-        } );
+        });
     </script>
 
 <!--
