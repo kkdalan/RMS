@@ -2,9 +2,9 @@
 {% block main %}
 <table  id="tbl_issue" width=100% rules="all" cellpadding='5';>
     <tr>
-        <td>No</td><td>Topic</td><td>Description</td><td>Notes</td> <td>Owner</td>
-        <td>Type</td><td>Start Date</td><td>End Date</td><td>Close Date</td><td>Status</td>
-        <td colspan="2"><center>[<a href='/issue/add'>create issue</a>]</center></td>
+        <th>No</th><th>Topic</th><th>Description</th><th>Notes</th> <th>Owner</th>
+        <th>Type</th><th>Start Date</th><th>End Date</th><th>Close Date</th><th>Status</th>
+        <th colspan="2"><center>[<a href='/issue/add'>create issue</a>]</center></th>
     </tr>
     {% for issue in all %}
         <tr>
@@ -28,6 +28,7 @@
     <script>
         $( function() {
             $("#tbl_issue").attr('style',"border:3px #FFAC55 double;padding:5px;background-color:#FFFFBB");
+            $("th").attr('style',"border:3px #FFAC55 double;padding:5px;");
             $("#td_no").attr('width', 10);
             $("#td_topic").attr('width', 60);
             $("#td_desc").attr('width', 200);
