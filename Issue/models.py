@@ -18,9 +18,9 @@ class Issue(models.Model):
     notes = models.TextField(blank=True,max_length=255)
     type = models.CharField(blank=True,max_length=10)
     owner = models.CharField(blank=True,max_length=20)
-    start_date = models.DateField(blank=True,null=True)
-    end_date = models.DateField(blank=True,null=True)
-    close_date = models.DateField(blank=True,null=True)
+    start_date = models.CharField(blank=True,max_length=10)
+    end_date = models.CharField(blank=True,max_length=10)
+    close_date = models.CharField(blank=True,max_length=10)
     status = models.CharField(blank=True,max_length=20)
     sys_time = models.DateTimeField(blank=True,default=datetime.now, editable = False)
 
@@ -35,23 +35,23 @@ class IssueForm(ModelForm):
         ['Closed','Closed'],
     ]
     
-    status = forms.ChoiceField(label='案件狀態', choices=STATUS)
+    status = forms.ChoiceField(label='Status', choices=STATUS)
 
     class Meta:
         model = Issue
         fields = '__all__'
         labels = {
-                'no': _('編號'),
-                'topic': _('主題'),
-                'desc': _('問題描述'),
-                'notes': _('備註'),
-                'type': _('類型'),
-                'owner': _('負責人'),
-                'start_date': _('起始日'),
-                'end_date': _('到期日'),
-                'close_date': _('結案日'),
-                'status': _('案件狀態'),
-                'sys_time':_('系統時間'),
+                'no': _('No'),
+                'topic': _('Topic'),
+                'desc': _('Description'),
+                'notes': _('Notes'),
+                'type': _('Type'),
+                'owner': _('Owner'),
+                'start_date': _('Start Date'),
+                'end_date': _('End Date'),
+                'close_date': _('Close Date'),
+                'status': _('Status'),
+                'sys_time':_('System Time'),
         }
         widgets = {
                 'desc': Textarea(attrs={'cols': 50, 'rows': 5}),

@@ -4,8 +4,8 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>RMS 專案管理系統</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/style1.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
@@ -14,24 +14,27 @@
             <input type='text' id = 'datepicker'>
             <table>
                 <tr>
-                    <td><a href='/'><img src='{% static "images/logo.jpeg" %}' width = 150 /></a></td>
-                    <td><h1>RMS- Requirement Management System<h1</td>
+                    <td><a href='/index'><img src='{% static "images/logo.jpeg" %}' width = 150 /></a></td>
+                    <td><h1>RMS-Requirement Management System<h1</td>
                 </tr>
             </table>
         </header>
-        <nav>
-            [<a href='/index'>HOME</a>]
-            [<a href='/list/all'>所有案件</a>]
-            [<a href='/list/New'>新申請</a>]
-            [<a href='/list/Processing'>待處理</a>]
-            [<a href='/list/Rejected'>已退件</a>]
-            [<a href='/list/Closed'>已結案</a>]
-        </nav>
+        <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a class="active" href="/list/all">All</a></li>
+            <li><a href="/list/New">New</a></li>
+            <li><a href="/list/Processing">Processing</a></li>
+            <li><a href="/list/Rejeted">Rejected</a></li>
+            <li><a href="/list/Closed">Closed</a></li>
+        </ul>
         <hr>
         {% block main %}{% endblock %}
         <hr>
-        <p>這是一個 Django 網站, 由 Pyman 製作</P> 
-        [<a href='/admin'>系統管理</a>]
-        [<a href='/logout'>登出</a>]
+        <ul>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+        </br>
+        This is a django website, made by Pyman, 2017
     </body>
 </html>

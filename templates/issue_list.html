@@ -1,31 +1,47 @@
 {% extends 'base.html' %}
 {% block main %}
-<table  id="tbl_issue" 
-    style="border:3px #FFAC55 double;padding:5px;" rules="all" cellpadding='5';>
+<table  id="tbl_issue" width=100% rules="all" cellpadding='5';>
     <tr>
-        <td>選取</td><td>編號</td><td>主題</td><td>問題描述</td><td>備註</td> <td>負責人</td>
-        <td>類型</td><td>起始日</td><td>到期日</td><td>結案日</td><td>案件狀態</td>
-        <td colspan="2"><center> 執行 : [<a href='/issue/add'>新增</a>]</center></td>
+        <td>No</td><td>Topic</td><td>Description</td><td>Notes</td> <td>Owner</td>
+        <td>Type</td><td>Start Date</td><td>End Date</td><td>Close Date</td><td>Status</td>
+        <td colspan="2"><center>[<a href='/issue/add'>create issue</a>]</center></td>
     </tr>
     {% for issue in all %}
         <tr>
-            <td class="cb"><center><input type="checkbox" name="" value="" /></center></td>
-            <td>{{issue.no}}</td>
-            <td>{{issue.topic}}</td>
-            <td>{{issue.desc}}</td>
-            <td>{{issue.notes}}</td>
-            <td>{{issue.owner}}</td>
-            <td>{{issue.type}}</td>
-            <td>{{issue.start_date}}</td>
-            <td>{{issue.end_date}}</td>
-            <td>{{issue.close_date}}</td>
-            <td>{{issue.status}}</td>
-            <td>[<a href='/issue/edit/{{issue.no}}'>編輯</a>]</td>
-            <td>[<a href='/issue/del/{{issue.no}}'>刪除</a>]</td>
+            <td id='td_no'><center>{{issue.no}}</center></td>
+            <td id='td_topic'>{{issue.topic}}</td>
+            <td id='td_desc'>{{issue.desc}}</td>
+            <td id='td_notes'>{{issue.notes}}</td>
+            <td id='td_owner'>{{issue.owner}}</td>
+            <td id='td_type'>{{issue.type}}</td>
+            <td id='td_start_date'>{{issue.start_date}}</td>
+            <td id='td_end_date'>{{issue.end_date}}</td>
+            <td id='td_close_date'>{{issue.close_date}}</td>
+            <td id='td_status'>{{issue.status}}</td>
+            <td id='td_edit'>[<a href='/issue/edit/{{issue.no}}'>edit</a>]</td>
+            <td id='td_del'>[<a href='/issue/del/{{issue.no}}'>delete</a>]</td>
             </td>
         </tr>
     {% empty %}
         <p>There is no issue available!</p>
     {% endfor %}
+    <script>
+        $( function() {
+            $("#tbl_issue").attr('style',"border:3px #FFAC55 double;padding:5px;background-color:#FFFFBB");
+            $("#td_no").attr('width', 10);
+            $("#td_topic").attr('width', 60);
+            $("#td_desc").attr('width', 200);
+            $("#td_notes").attr('width', 200); 
+            $("#td_owner").attr('width', 60);
+            $("#td_type").attr('width', 60);
+            $("#td_start_date").attr('width', 90);
+            $("#td_end_date").attr('width', 90);
+            $("#td_close_date").attr('width', 90);
+            $("#td_status").attr('width', 60);
+            $("#td_edit").attr('width', 20);
+            $("#td_del").attr('width', 20);
+        } );
+    </script>
+
 </table>
 {%endblock%}
